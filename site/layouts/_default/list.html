@@ -3,9 +3,9 @@
 <div>
   <ul>
       {{ range (.Paginator 4).Pages.ByPublishDate }}
-          <div>
+          <li>
             {{ .Render "li"}}
-          </div>
+          </li>
       {{ end }}
   </ul>
   {{ partial "pagination" . }}

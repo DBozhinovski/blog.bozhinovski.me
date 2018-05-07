@@ -1,6 +1,6 @@
-<a href="{{ .Permalink }}">
+<a href="{{ .Permalink }}" class="listing">
 	<h2>{{ .Title }}</h2>
-	<p>{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
-	<p>{{ .Description }}</p>
-	<p>Read more →</p>
+	<p class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
+	<p class="summary">{{ .Summary }}</p>
+	<p class="more">Read more →</p>
 </a>

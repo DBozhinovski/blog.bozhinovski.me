@@ -1,12 +1,12 @@
 {{ define "main" }}
 
-  <div class="single">
+  <div>
     <h1>{{.Title}}</h1>
     <div>
-      <p class="date">{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
-      <p class="duration">~ Read in {{ .ReadingTime }} minutes ~</p>
+      <p>{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
+      <p>Read in {{ .ReadingTime }} minutes</p>
     </div>
-    <div class="contents">
+    <div>
       <p>{{ .Description }}</p>
       {{ if .Params.image }}<img src="{{ .Params.image }}" alt="{{ .Title }}" />{{ end }}
       {{ .Content }}

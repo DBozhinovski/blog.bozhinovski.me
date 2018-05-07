@@ -2,8 +2,12 @@
 <html lang="en">
   {{ partial "head" . }}
   <body>
-    {{ partial "nav" . }}
-    {{ block "main" . }}{{ end }} 
-    {{ partial "footer" . }} 
+    <div class="root">
+      {{ partial "nav" . }}
+      <main>
+        {{ block "main" . }}{{ end }}
+      </main> 
+      {{ partial "footer" . }}
+    </div> 
   </body>
 </html>

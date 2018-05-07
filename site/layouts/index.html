@@ -1,5 +1,14 @@
 {{ define "main" }}
 
-bozhinovski.me blog
+<div>
+  <ul class="article-list">
+    {{ range ( where .Data.Pages.ByDate.Reverse "Section" "post" ) }}
+          <li>
+            {{ .Render "li"}}
+          </li>
+      {{ end }}
+  </ul>
+  {{ partial "pagination" . }}
+</div>
 
-{{ end }}
+{{end}}
