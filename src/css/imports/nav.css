@@ -67,11 +67,22 @@ nav ul.primary a:hover {
     padding-top: 2em;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
   }
 
   nav ul.primary li {
     padding: .3em 0;
     text-align: center;
+  }
+
+  nav .nav-social {
+    padding: 1em;
+    justify-self: flex-end;
+    opacity: .7;
+  }
+
+  nav .nav-social a {
+    margin: .3em;
   }
 }
 
@@ -125,6 +136,10 @@ nav ul.primary a:hover {
   nav ul.primary li {
     padding: .5em;
   }
+
+  nav .nav-social {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -174,5 +189,9 @@ nav ul.primary a:hover {
 
   nav ul.primary li {
     padding: .2em;
+  }
+
+  nav .nav-social {
+    display: none;
   }
 }

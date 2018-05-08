@@ -68,7 +68,6 @@ main .contents {
 
 main .contents p {
   line-height: 1.4em;
-  font-weight: light;
   padding: .8em 0;
   text-indent: 1.2em;
   color: rgba(0,0,0, .8);
@@ -78,6 +77,21 @@ main .contents p::first-letter {
   font-weight: bold;
   color: black;
   font-size: 1.3em;
+}
+
+main .share-heading {
+  padding: 2em 1em 0 1em;
+  color: rgba(0,0,0, .6);
+}
+
+main .SocialMediaShareButton {
+  cursor: pointer;
+  padding: .5em;
+}
+
+main .social-share>div {
+  display: flex;
+  padding: 1em;
 }
 
 @media only screen and (max-width: 767px) {
@@ -101,5 +115,6 @@ main .contents p::first-letter {
     padding: 3% 3vw;
     font-size: 21px;
     overflow-x: hidden;
+    max-width: 1200px;
   }
 }
