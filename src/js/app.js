@@ -1,22 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {
-  FacebookShareButton,
-  GooglePlusShareButton,
-  TwitterShareButton,
-  FacebookIcon,
-  TwitterIcon,
-  GooglePlusIcon,
-} from "react-share";
 import { SocialIcon } from "react-social-icons";
-
-const Sharer = () => (
-  <div>
-    <TwitterShareButton url={location.href} title={document.title}><TwitterIcon round /></TwitterShareButton>
-    <GooglePlusShareButton url={location.href} title={document.title}><GooglePlusIcon round /></GooglePlusShareButton>
-    <FacebookShareButton url={location.href} title={document.title}><FacebookIcon round /></FacebookShareButton>
-  </div>
-);
 
 const Links = () => (
   <React.Fragment>
