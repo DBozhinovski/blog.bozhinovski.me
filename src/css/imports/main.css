@@ -94,6 +94,17 @@ main .social-share>div {
   padding: 1em;
 }
 
+main .highlight {
+  padding: .5em;
+}
+
+main .highlight pre {
+  padding: 1em;
+  line-height: 1.3em;
+  font-family: 'Source Code Pro', monospace;
+  font-size: .9em;
+}
+
 @media only screen and (max-width: 767px) {
   main {
     padding: 5vw;

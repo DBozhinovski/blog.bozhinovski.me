@@ -6,3 +6,7 @@
 /* COMPONENTS */
 @import 'imports/nav.css';
 @import 'imports/main.css';
+
+
+/* SYNTAX HIGHLIGHT */
+@import 'imports/syntax.css';
