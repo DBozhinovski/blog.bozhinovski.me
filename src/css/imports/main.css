@@ -61,6 +61,51 @@ main .single .duration {
   border-bottom: 1px dotted #ccc;
 }
 
+main .single h2 {
+  color: var(--color-traditionalBrown);
+  font-size: 1.6em;
+  margin: 1em 0;
+}
+
+main .single a {
+  color: var(--color-traditionalBrown);
+}
+
+main .single ol {
+  list-style: decimal;
+  padding: 1em 3em;
+}
+
+main .single ol:last-child {
+  font-size: .9em;
+}
+
+main .single ol li {
+  margin: .7em 0;
+  color: rgba(0,0,0, .8);
+  line-height: 1.2em;
+}
+
+main .single sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+main .single em {
+  font-style: italic;
+}
+
+main .single strong {
+  font-weight: bold;
+}
+
+main .single h3 {
+  /* color: var(--color-traditionalBrown); */
+  font-size: 1.2em;
+  margin: .7em 0;
+  font-weight: bold;
+}
+
 main .contents {
   padding: .5em;
   border-bottom: 1px dotted #ccc;
