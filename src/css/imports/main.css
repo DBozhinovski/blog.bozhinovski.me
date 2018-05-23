@@ -42,7 +42,7 @@ main .article-list .summary {
   color: rgba(0,0,0, .8);
 }
 
-main .single h1 {
+main .single h1, main .about h1 {
   color: var(--color-traditionalBrown);
   font-size: 2em;
   margin-bottom: .3em;
@@ -61,12 +61,66 @@ main .single .duration {
   border-bottom: 1px dotted #ccc;
 }
 
-main .contents {
+main .single h2, main .about h2 {
+  color: var(--color-traditionalBrown);
+  font-size: 1.6em;
+  margin: 1em 0;
+}
+
+main .single a, main .about a {
+  color: var(--color-traditionalBrown);
+}
+
+main .single ol {
+  list-style: decimal;
+  padding: 1em 3em;
+}
+
+main .about ul {
+  list-style: circle;
+  padding: 1em 3em;
+}
+
+main .about small {
+  font-size: .5em;
+}
+
+main .single ol:last-child {
+  font-size: .9em;
+}
+
+main .single ol li, main .about li  {
+  margin: .7em 0;
+  color: rgba(0,0,0, .8);
+  line-height: 1.2em;
+}
+
+main .single sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+main .single em {
+  font-style: italic;
+}
+
+main .single strong {
+  font-weight: bold;
+}
+
+main .single h3 {
+  /* color: var(--color-traditionalBrown); */
+  font-size: 1.2em;
+  margin: .7em 0;
+  font-weight: bold;
+}
+
+main .contents, main .about {
   padding: .5em;
   border-bottom: 1px dotted #ccc;
 }
 
-main .contents p {
+main .contents p, main .about p {
   line-height: 1.4em;
   padding: .8em 0;
   text-indent: 1.2em;
