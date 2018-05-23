@@ -63,8 +63,90 @@ export default {
 
 The theory here is that we'll have an index of all of the skills our bot knows, and we'll have a way of looking up the most appropriate one by using the magic of compromise.js. Now, before we get any further into making the above mentioned lookup work, we need a bit more info on what compromise can do to simplify that otherwise tedious task. 
 
-When we give an input to compromise.js, it's nice enough to tag all of 
+When we give an input to compromise.js, it's nice enough to tag all [Parts of Speech](https://github.com/spencermountain/compromise/wiki/Part-of-Speech-Tagging) and give us a tool to [match](https://github.com/spencermountain/compromise/wiki/Match-Syntax) against them, together with regex, plain words and our own custom tags if we happen to need them. I mean, if you decide "glue" is a preposition, you can tell compromise to treat it is such. But just so you know, "glue" is not a preposition.
+So, with that out of the way, we can put the lookup part together:
+
+{{< highlight js "linenos=table" >}}
+import skills from './skills/'; // The index for all of our skills
+
+const getReply = (input) => {
+  const skillMatch = skills.find((s) => {
+    const ruleMatch = s.matchRules.find(
+      r => nlp(input).normalize().match(r).found
+    );
+
+    if (ruleMatch) {
+      return true;
+    }
+  });
+
+  nlp(input).debug();
+
+  if (skillMatch) {
+    const reply = await skillMatch.reply(input, context);
+    return reply;
+  }
+};
+
+export default {
+  getReply,
+};
+{{< /highlight >}}
+
+So, we improved our decision-maker to look for whether an input matches against a skill's match config. The whole process can be described as:
+
+1. We import all of our skills into the "brain" (line 1)
+2. We look through each of a skill's match rules to find what works for the given input (lines 4-12);
+3. If we happen to find a skill, we use it's `reply` function to return a reply (lines 16-19)
+4. Since compromise comes with a nice debugger, we use it to give us more info (line 14)
+
+To make the puzzle complete, let's take a look at a full skill:
+
+{{< highlight js "linenos=table" >}}
+import { random } from 'lodash';
+
+const ID = 'greet';
+
+const lexicon = {};
+
+const matchRules = [
+  '(hi|hello|ahoy|greetings|#Expression) bot?'
+]
+
+const replies = [
+  () => 'Hello human',
+  () => 'Hi there',
+  () => 'Sup?',
+  () => 'Ahoy!',
+]
+
+const reply = (input, context) => {
+  const replyRoll = random(0, replies.length - 1);
+  return replies[replyRoll](input, context);
+}
+
+export default {
+  ID,
+  lexicon,
+  matchRules,
+  reply
+}
+{{< /highlight >}}
+
+What the above does, following the bare structure we defined previously is:
+
+1. Define match rules (lines 7-9), giving our "brain" something to match against. So, whenever the brain gets a "hi", "hello", "ahoy" or "greetings" as input, that is going to trigger this skill, because compromise's `.match()` matches it here. As a last ditch effort to make it work, whenever compromise recognizes something as an "#Expression" we trigger on that too (not ideal, but works suprisingly well).
+2. In order not to get too boring with repetition, we randomize stuff a little bit with the "replies" array, and pick a random one on each trigger (lines 11-18).
+
+With that done, we have a basic bot that's not as dumb as it's first iteration. This one can reply to greetings with a greeting, making it at least somewhat context-sensitive. It's still too dumb for anything more sophisticated, but the basics are there.
+
+### 3. Improvements
+
+There are some glaringly obvious shortcomings with our bot right now - it doesn't do too much right now, it's not aware of historical data or context and doesn't do fallback answers when it doesn't match any of the given skills. And I plan on making it better in part 2 of this thing, very soon 😎. For the impatient, have a look at my example bot from the talk I mentioned above [here](https://github.com/DBozhinovski/beerjs-bot) or see it live [here](https://beerbot.darko.io/). That versions has a few more tricks up it's sleeve, but by the time we're done with this verions of the bot, it will be a lot smarter than the deployed "beerbot" there.
 
 
+Thanks for reading, and join me in the next installment when we improve the bot's "smarts" significantly.
+
+----------------
 
 1. <span id="1"></span> Not reactive as used in programming, but reactive as in "[readily responsive to a stimulus](https://www.merriam-webster.com/dictionary/reactive)" - although the two feel very similar here.
